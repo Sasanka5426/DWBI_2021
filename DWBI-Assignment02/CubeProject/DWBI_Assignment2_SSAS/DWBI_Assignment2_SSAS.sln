@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{D2ABAB84-BF74-430A-B69E-9DC6D40DDA17}") = "DWBI_Assignment2_SSAS", "DWBI_Assignment2_SSAS\DWBI_Assignment2_SSAS.dwproj", "{FA09B8B7-0199-4AED-A045-319ED0382BB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FA09B8B7-0199-4AED-A045-319ED0382BB6}.Development|Default.ActiveCfg = Development
+		{FA09B8B7-0199-4AED-A045-319ED0382BB6}.Development|Default.Build.0 = Development
+		{FA09B8B7-0199-4AED-A045-319ED0382BB6}.Development|Default.Deploy.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,6 @@
+Region,Area,NationalShare,HouseHoldSize
+Northern,889881,28.1766,5.2
+Western,508042,16.0863,4.4
+Southern,636251,20.1458,4.1
+Eastern,418336,13.2459,4.9
+NorthEastern,262179,8.3014,4.9

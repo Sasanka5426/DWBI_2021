@@ -1,0 +1,642 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report MustUnderstand="df" xmlns="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner" xmlns:df="http://schemas.microsoft.com/sqlserver/reporting/2016/01/reportdefinition/defaultfontfamily">
+  <df:DefaultFontFamily>Segoe UI</df:DefaultFontFamily>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="DWBI_India_Power_Generaion_DW">
+      <ConnectionProperties>
+        <DataProvider>SQL</DataProvider>
+        <ConnectString>Data Source=DESKTOP-8SCUHKK\SKSQLSERVER;Initial Catalog=IndiaPowerGeneration_DW</ConnectString>
+        <IntegratedSecurity>true</IntegratedSecurity>
+      </ConnectionProperties>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>b2ac53a4-8f40-4897-b945-c75ab8e8342a</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="DataSet1">
+      <Query>
+        <DataSourceName>DWBI_India_Power_Generaion_DW</DataSourceName>
+        <CommandText>SELECT
+  DimRegionDetails.Region
+  ,DimRegionDetails.Area
+  ,DimRegionDetails.NationalShare
+  ,DimRegionDetails.HouseHoldSize
+  ,DimRegionCoordinates.Latitude
+  ,DimRegionCoordinates.Longitude
+  ,DimDate.[Year]
+  ,DimDate.Quarter
+  ,DimDate.[Month]
+  ,DimDate.WeekOfMonth
+  ,DimDate.DaySuffix
+  ,DimDate.DayName
+  ,DimDate.[Date]
+  ,FactPowerGeneration.Thermal_Actual
+  ,FactPowerGeneration.Thermal_Estimated
+  ,FactPowerGeneration.Thermal_Difference
+  ,FactPowerGeneration.Nuclear_Actual
+  ,FactPowerGeneration.Nuclear_Estimated
+  ,FactPowerGeneration.Nuclear_Difference
+  ,FactPowerGeneration.Hydro_Actual
+  ,FactPowerGeneration.Hydro_Estimated
+  ,FactPowerGeneration.Hydro_Difference
+FROM
+  FactPowerGeneration
+  INNER JOIN DimRegionDetails
+    ON FactPowerGeneration.RegionDetailsSK = DimRegionDetails.ReionDetailsSK
+  INNER JOIN DimRegionCoordinates
+    ON FactPowerGeneration.RegionCoordinateSK = DimRegionCoordinates.RegionCoordinatesSK
+  INNER JOIN DimDate
+    ON FactPowerGeneration.DateSK = DimDate.DateKey</CommandText>
+        <rd:DesignerState>&amp;amp;amp;lt;QueryDefinition xmlns="http://schemas.microsoft.com/ReportingServices/QueryDefinition/Relational"&amp;amp;amp;gt;&amp;amp;amp;lt;AutoJoin&amp;amp;amp;gt;False&amp;amp;amp;lt;/AutoJoin&amp;amp;amp;gt;&amp;amp;amp;lt;SelectedColumns&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimRegionDetails" ColumnName="Region" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimRegionDetails" ColumnName="Area" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimRegionDetails" ColumnName="NationalShare" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimRegionDetails" ColumnName="HouseHoldSize" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimRegionCoordinates" ColumnName="Latitude" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimRegionCoordinates" ColumnName="Longitude" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimDate" ColumnName="Year" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimDate" ColumnName="Quarter" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimDate" ColumnName="Month" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimDate" ColumnName="WeekOfMonth" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimDate" ColumnName="DaySuffix" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimDate" ColumnName="DayName" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="DimDate" ColumnName="Date" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="FactPowerGeneration" ColumnName="Thermal_Actual" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="FactPowerGeneration" ColumnName="Thermal_Estimated" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="FactPowerGeneration" ColumnName="Thermal_Difference" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="FactPowerGeneration" ColumnName="Nuclear_Actual" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="FactPowerGeneration" ColumnName="Nuclear_Estimated" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="FactPowerGeneration" ColumnName="Nuclear_Difference" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="FactPowerGeneration" ColumnName="Hydro_Actual" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="FactPowerGeneration" ColumnName="Hydro_Estimated" /&amp;amp;amp;gt;&amp;amp;amp;lt;ColumnExpression ColumnOwner="FactPowerGeneration" ColumnName="Hydro_Difference" /&amp;amp;amp;gt;&amp;amp;amp;lt;/SelectedColumns&amp;amp;amp;gt;&amp;amp;amp;lt;Joins&amp;amp;amp;gt;&amp;amp;amp;lt;Join Type="CROSS JOIN" ColumnOwner="FactPowerGeneration" /&amp;amp;amp;gt;&amp;amp;amp;lt;Join Type="INNER JOIN" ColumnOwner="DimRegionDetails"&amp;amp;amp;gt;&amp;amp;amp;lt;On&amp;amp;amp;gt;&amp;amp;amp;lt;From ColumnOwner="FactPowerGeneration" ColumnName="RegionDetailsSK" /&amp;amp;amp;gt;&amp;amp;amp;lt;To ColumnOwner="DimRegionDetails" ColumnName="ReionDetailsSK" /&amp;amp;amp;gt;&amp;amp;amp;lt;/On&amp;amp;amp;gt;&amp;amp;amp;lt;/Join&amp;amp;amp;gt;&amp;amp;amp;lt;Join Type="INNER JOIN" ColumnOwner="DimRegionCoordinates"&amp;amp;amp;gt;&amp;amp;amp;lt;On&amp;amp;amp;gt;&amp;amp;amp;lt;From ColumnOwner="FactPowerGeneration" ColumnName="RegionCoordinateSK" /&amp;amp;amp;gt;&amp;amp;amp;lt;To ColumnOwner="DimRegionCoordinates" ColumnName="RegionCoordinatesSK" /&amp;amp;amp;gt;&amp;amp;amp;lt;/On&amp;amp;amp;gt;&amp;amp;amp;lt;/Join&amp;amp;amp;gt;&amp;amp;amp;lt;Join Type="INNER JOIN" ColumnOwner="DimDate"&amp;amp;amp;gt;&amp;amp;amp;lt;On&amp;amp;amp;gt;&amp;amp;amp;lt;From ColumnOwner="FactPowerGeneration" ColumnName="DateSK" /&amp;amp;amp;gt;&amp;amp;amp;lt;To ColumnOwner="DimDate" ColumnName="DateKey" /&amp;amp;amp;gt;&amp;amp;amp;lt;/On&amp;amp;amp;gt;&amp;amp;amp;lt;/Join&amp;amp;amp;gt;&amp;amp;amp;lt;/Joins&amp;amp;amp;gt;&amp;amp;amp;lt;/QueryDefinition&amp;amp;amp;gt;</rd:DesignerState>
+      </Query>
+      <Fields>
+        <Field Name="Region">
+          <DataField>Region</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Area">
+          <DataField>Area</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="NationalShare">
+          <DataField>NationalShare</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="HouseHoldSize">
+          <DataField>HouseHoldSize</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Latitude">
+          <DataField>Latitude</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Longitude">
+          <DataField>Longitude</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Year">
+          <DataField>Year</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Quarter">
+          <DataField>Quarter</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Month">
+          <DataField>Month</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="WeekOfMonth">
+          <DataField>WeekOfMonth</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DaySuffix">
+          <DataField>DaySuffix</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DayName">
+          <DataField>DayName</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Date">
+          <DataField>Date</DataField>
+          <rd:TypeName>System.DateTime</rd:TypeName>
+        </Field>
+        <Field Name="Thermal_Actual">
+          <DataField>Thermal_Actual</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Thermal_Estimated">
+          <DataField>Thermal_Estimated</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Thermal_Difference">
+          <DataField>Thermal_Difference</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Nuclear_Actual">
+          <DataField>Nuclear_Actual</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Nuclear_Estimated">
+          <DataField>Nuclear_Estimated</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Nuclear_Difference">
+          <DataField>Nuclear_Difference</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Hydro_Actual">
+          <DataField>Hydro_Actual</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Hydro_Estimated">
+          <DataField>Hydro_Estimated</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Hydro_Difference">
+          <DataField>Hydro_Difference</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportSections>
+    <ReportSection>
+      <Body>
+        <ReportItems>
+          <Chart Name="Chart1">
+            <ChartCategoryHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Group Name="Chart1_CategoryGroup">
+                    <GroupExpressions>
+                      <GroupExpression>=Fields!Region.Value</GroupExpression>
+                    </GroupExpressions>
+                  </Group>
+                  <SortExpressions>
+                    <SortExpression>
+                      <Value>=Fields!Region.Value</Value>
+                    </SortExpression>
+                  </SortExpressions>
+                  <Label>=Fields!Region.Value</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartCategoryHierarchy>
+            <ChartSeriesHierarchy>
+              <ChartMembers>
+                <ChartMember>
+                  <Label>House Hold Size</Label>
+                </ChartMember>
+              </ChartMembers>
+            </ChartSeriesHierarchy>
+            <ChartData>
+              <ChartSeriesCollection>
+                <ChartSeries Name="HouseHoldSize">
+                  <ChartDataPoints>
+                    <ChartDataPoint>
+                      <ChartDataPointValues>
+                        <Y>=First(Fields!HouseHoldSize.Value)</Y>
+                      </ChartDataPointValues>
+                      <ChartDataLabel>
+                        <Style>
+                          <FontSize>9pt</FontSize>
+                        </Style>
+                        <UseValueAsLabel>true</UseValueAsLabel>
+                        <Visible>true</Visible>
+                      </ChartDataLabel>
+                      <ToolTip>#VALY</ToolTip>
+                      <ActionInfo>
+                        <Actions>
+                          <Action>
+                            <Drillthrough>
+                              <ReportName>/Power Generation Column Chart(Yearly) details report</ReportName>
+                              <Parameters>
+                                <Parameter Name="Region">
+                                  <Value>=Fields!Region.Value</Value>
+                                </Parameter>
+                              </Parameters>
+                            </Drillthrough>
+                          </Action>
+                        </Actions>
+                      </ActionInfo>
+                      <Style />
+                      <ChartMarker>
+                        <Style />
+                      </ChartMarker>
+                      <DataElementOutput>Output</DataElementOutput>
+                    </ChartDataPoint>
+                  </ChartDataPoints>
+                  <Style>
+                    <ShadowOffset>0pt</ShadowOffset>
+                  </Style>
+                  <ChartEmptyPoints>
+                    <Style />
+                    <ChartMarker>
+                      <Style />
+                    </ChartMarker>
+                    <ChartDataLabel>
+                      <Style />
+                    </ChartDataLabel>
+                  </ChartEmptyPoints>
+                  <ValueAxisName>Primary</ValueAxisName>
+                  <CategoryAxisName>Primary</CategoryAxisName>
+                  <ChartSmartLabel>
+                    <CalloutLineColor>Black</CalloutLineColor>
+                    <MinMovingDistance>0pt</MinMovingDistance>
+                  </ChartSmartLabel>
+                </ChartSeries>
+              </ChartSeriesCollection>
+            </ChartData>
+            <ChartAreas>
+              <ChartArea Name="Default">
+                <ChartCategoryAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>#5c5c5c</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>#5c5c5c</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Enabled>False</Enabled>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartCategoryAxes>
+                <ChartValueAxes>
+                  <ChartAxis Name="Primary">
+                    <Style>
+                      <Border>
+                        <Color>#5c5c5c</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                  <ChartAxis Name="Secondary">
+                    <Style>
+                      <Border>
+                        <Color>#5c5c5c</Color>
+                        <Style>None</Style>
+                      </Border>
+                      <FontSize>8pt</FontSize>
+                      <Color>#5c5c5c</Color>
+                    </Style>
+                    <ChartAxisTitle>
+                      <Caption />
+                      <Style>
+                        <FontSize>9pt</FontSize>
+                        <Color>#5c5c5c</Color>
+                      </Style>
+                    </ChartAxisTitle>
+                    <ChartMajorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                        </Border>
+                      </Style>
+                    </ChartMajorGridLines>
+                    <ChartMinorGridLines>
+                      <Style>
+                        <Border>
+                          <Color>Gainsboro</Color>
+                          <Style>Dotted</Style>
+                        </Border>
+                      </Style>
+                    </ChartMinorGridLines>
+                    <ChartMajorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </ChartMajorTickMarks>
+                    <ChartMinorTickMarks>
+                      <Style>
+                        <Border>
+                          <Color>LightGrey</Color>
+                        </Border>
+                      </Style>
+                      <Length>0.5</Length>
+                    </ChartMinorTickMarks>
+                    <CrossAt>NaN</CrossAt>
+                    <Location>Opposite</Location>
+                    <Minimum>NaN</Minimum>
+                    <Maximum>NaN</Maximum>
+                    <ChartAxisScaleBreak>
+                      <Style />
+                    </ChartAxisScaleBreak>
+                  </ChartAxis>
+                </ChartValueAxes>
+                <Style>
+                  <BackgroundColor>#00ffffff</BackgroundColor>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                </Style>
+              </ChartArea>
+            </ChartAreas>
+            <ChartLegends>
+              <ChartLegend Name="Default">
+                <Style>
+                  <Border>
+                    <Color>#5c5c5c</Color>
+                  </Border>
+                  <BackgroundGradientType>TopBottom</BackgroundGradientType>
+                  <FontSize>8pt</FontSize>
+                </Style>
+                <Position>TopLeft</Position>
+                <ChartLegendTitle>
+                  <Caption />
+                  <Style>
+                    <FontSize>8pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </ChartLegendTitle>
+                <HeaderSeparatorColor>Black</HeaderSeparatorColor>
+                <ColumnSeparatorColor>Black</ColumnSeparatorColor>
+              </ChartLegend>
+            </ChartLegends>
+            <ChartTitles>
+              <ChartTitle Name="Default">
+                <Caption>Chart Title</Caption>
+                <Style>
+                  <BackgroundGradientType>None</BackgroundGradientType>
+                  <FontSize>9pt</FontSize>
+                  <FontWeight>Normal</FontWeight>
+                  <TextAlign>Left</TextAlign>
+                  <VerticalAlign>Top</VerticalAlign>
+                  <Color>#a6a6a6</Color>
+                </Style>
+                <Position>TopLeft</Position>
+              </ChartTitle>
+            </ChartTitles>
+            <Palette>Pacific</Palette>
+            <ChartBorderSkin>
+              <Style>
+                <BackgroundColor>Gray</BackgroundColor>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <Color>White</Color>
+              </Style>
+            </ChartBorderSkin>
+            <ChartNoDataMessage Name="NoDataMessage">
+              <Caption>No Data Available</Caption>
+              <Style>
+                <BackgroundGradientType>None</BackgroundGradientType>
+                <FontWeight>Bold</FontWeight>
+                <TextAlign>General</TextAlign>
+                <VerticalAlign>Top</VerticalAlign>
+              </Style>
+            </ChartNoDataMessage>
+            <DataSetName>DataSet1</DataSetName>
+            <Top>12.7mm</Top>
+            <Left>0mm</Left>
+            <Height>4.21875in</Height>
+            <Width>8.5625in</Width>
+            <Style>
+              <Border>
+                <Color>#5c5c5c</Color>
+                <Style>None</Style>
+                <Width>2pt</Width>
+              </Border>
+              <BackgroundColor>White</BackgroundColor>
+              <BackgroundGradientType>None</BackgroundGradientType>
+            </Style>
+          </Chart>
+          <Textbox Name="ReportTitle">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>Region House Hold Size</Value>
+                    <Style>
+                      <FontFamily>Segoe UI Light</FontFamily>
+                      <FontSize>20pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:WatermarkTextbox>Title</rd:WatermarkTextbox>
+            <rd:DefaultName>ReportTitle</rd:DefaultName>
+            <Top>0mm</Top>
+            <Left>4.10104cm</Left>
+            <Height>12.7mm</Height>
+            <Width>139.7mm</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+        </ReportItems>
+        <Height>119.85625mm</Height>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Body>
+      <Width>232.30416mm</Width>
+      <Page>
+        <PageFooter>
+          <Height>28.09875mm</Height>
+          <PrintOnFirstPage>true</PrintOnFirstPage>
+          <PrintOnLastPage>true</PrintOnLastPage>
+          <ReportItems>
+            <Textbox Name="ExecutionTime">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Globals!ExecutionTime</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>ExecutionTime</rd:DefaultName>
+              <Top>21.74875mm</Top>
+              <Left>181.50416mm</Left>
+              <Height>6.35mm</Height>
+              <Width>50.8mm</Width>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+          </ReportItems>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </PageFooter>
+        <PageHeight>297mm</PageHeight>
+        <PageWidth>210mm</PageWidth>
+        <LeftMargin>20mm</LeftMargin>
+        <RightMargin>20mm</RightMargin>
+        <TopMargin>20mm</TopMargin>
+        <BottomMargin>20mm</BottomMargin>
+        <ColumnSpacing>0.13cm</ColumnSpacing>
+        <Style />
+      </Page>
+    </ReportSection>
+  </ReportSections>
+  <ReportParametersLayout>
+    <GridLayoutDefinition>
+      <NumberOfColumns>4</NumberOfColumns>
+      <NumberOfRows>2</NumberOfRows>
+    </GridLayoutDefinition>
+  </ReportParametersLayout>
+  <rd:ReportUnitType>Mm</rd:ReportUnitType>
+  <rd:ReportServerUrl>http://desktop-8scuhkk/ReportServer_SKSQLSERVER</rd:ReportServerUrl>
+  <rd:ReportID>56f6122b-a1ad-4852-b566-262bb0de685d</rd:ReportID>
+</Report>
